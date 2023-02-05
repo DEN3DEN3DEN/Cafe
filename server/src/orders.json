@@ -1,0 +1,10 @@
+
+[
+    {
+      "name": "Chicken burger",
+      "price": 115,
+      "size": "Small",
+      "topping": "salad",
+      "customer": "Jameson"
+    }
+]
