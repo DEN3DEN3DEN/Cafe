@@ -24,18 +24,18 @@ export function createElement(tagName, content, attributes, eventHandlers, paren
   
     parentElem.appendChild(element);
     return element;
-  }
+}
   
-  /**
+/**
    * attributes
    * { id: '', className: '', 'data-index': '' }
    * 
    * eventHandlers
    * { click: function, mouseover: function }
-   */
+*/
   
   
-  export function createProductCard(product, buyClickHandler) {
+export function createProductCard(product, buyClickHandler) {
     const parentElem = createElement('div', '', {className: 'product_card card mb-4 rounded-3 shadow-sm card-body col'}, null, '#content');
     createElement('h3', product.name, null, null, parentElem);
     createElement('p', `UAH ${product.price}`, null, null, parentElem);
@@ -59,9 +59,9 @@ export function createElement(tagName, content, attributes, eventHandlers, paren
           <input type="button" data-product-id= value="Buy" />
         </div>
     */
-  }
+}
   
-  export function createCheckoutForm(product, changeSizeHandler, changeToppingHandler, sendOrder, showOrder) {
+export function createCheckoutForm(product, changeSizeHandler, changeToppingHandler, sendOrder, showOrder) {
     document.querySelector('#modal_details').innerHTML = '';
     document.querySelector('#modal_price').innerHTML = '';
     updateProductPrice(product.price);
@@ -104,9 +104,9 @@ export function createElement(tagName, content, attributes, eventHandlers, paren
     createElement('input', '', {type: 'text', name: 'client_name', placeholder: 'Enter your name', className: 'client_name inputCust'}, null, buttonsP);
     createElement('input', '', {type: 'button', value: 'Order', className: 'btn btn-lg btn-primary '}, {click: sendOrder}, buttonsP);
     createElement('input', '', {type: 'button', value: 'Show Order', className: 'btn btn-lg btn-primary '}, {click: showOrder}, buttonsP);
-  }
+}
   
-  export function updateProductPrice(newPrice) {
+export function updateProductPrice(newPrice) {
     document.querySelector('#modal_price').innerHTML = '';
     createElement('span', `UAH ${newPrice}`, {className: 'priceOrder textBg'}, null, '#modal_price');
-  }
+}
