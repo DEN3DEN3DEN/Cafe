@@ -16,8 +16,7 @@ const sendOrder = () =>{
 
   if(orderCustumer.length > 0){
     const obj = {
-      order:
-       {
+      order: {
         name: orderName,
         price: orderPrice,
         size: orderSize,
@@ -93,7 +92,6 @@ const menuItemClickHandler = function(event) {
     })
 }
 
-// onload:
 fetch(API_CATEGORIES_LIST)
   .then(res => res.json())
   .then(categories => {
