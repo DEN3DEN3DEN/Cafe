@@ -7,37 +7,58 @@ import {API_CATEGORIES_LIST, API_PRODUCTS_BY_CATEGORY_ID, API_ORDERS_LIST} from 
 let productsArr = [];
 let currentProduct = {};
 
-const sendOrder = () => {
-    const orderName = document.querySelector('.orderName').innerText;
-    const orderPrice = document.querySelector('.priceOrder').innerText;
-    const orderSize = document.querySelector('input[name="size"]:checked').value;
-    const orderTopping = document.querySelector('input[name="toppings"]:checked').value;
-    const orderCustomer = document.querySelector('.client_name').value;
+const getOrderName = () => {
+  return document.querySelector('.orderName').innerText;
+}
 
-    if(orderCustomer.length > 0) {
+const getOrderPrice = () => {
+  return document.querySelector('.priceOrder').innerText;
+}
+
+const getOrderSize = () => {
+  return document.querySelector('input[name="size"]:checked').value;
+}
+
+const getOrderTopping = () => {
+  return document.querySelector('input[name="toppings"]:checked').value;
+}
+
+const getOrderCustomer = () => {
+  return document.querySelector('.client_name').value;
+}
+
+const validateForm = () => {
+  const orderCustomer = getOrderCustomer();
+  if(orderCustomer.length > 0) {
+    return true;
+  } else {
+    console.log('fields cannot be left blank!');
+    return false;
+  }
+}
+
+const sendOrder = () => {
+  if(validateForm()) {
     const orderObj = {
-        order: {
-            name: orderName,
-            price: orderPrice,
-            size: orderSize,
-            topping: orderTopping,
-            customer: orderCustomer
-        }
+      order: {
+        name: getOrderName(),
+        price: getOrderPrice(),
+        size: getOrderSize(),
+        topping: getOrderTopping(),
+        customer: getOrderCustomer()
+      }
     }
-  
+
     fetch(API_ORDERS_LIST, {
-        method: 'POST',
-        body: JSON.stringify(orderObj),
-        headers: {
-            "Content-Type": "application/json"
-        },
+      method: 'POST',
+      body: JSON.stringify(orderObj),
+      headers: {
+        "Content-Type": "application/json"
+      },
     })
-    
+
     .then(response => console.log(response));
-    }
-    else{
-        console.log('fields cannot be left blank!');
-    }
+  }
 }
 
 const showOrder = () => {

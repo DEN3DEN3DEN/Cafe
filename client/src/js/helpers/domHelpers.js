@@ -51,14 +51,6 @@ export function createProductCard(product, buyClickHandler) {
       {click: buyClickHandler},
       parentElem
     );
-  
-    /*
-    <div class="product_card">
-          <h3>Product name</h3>
-          <p>UAH 150</p>
-          <input type="button" data-product-id= value="Buy" />
-        </div>
-    */
 }
   
 export function createCheckoutForm(product, changeSizeHandler, changeToppingHandler, sendOrder, showOrder) {
@@ -66,12 +58,10 @@ export function createCheckoutForm(product, changeSizeHandler, changeToppingHand
     document.querySelector('#modal_price').innerHTML = '';
     updateProductPrice(product.price);
     
-  
     createElement('p', product.name, {className: 'orderName textBg'}, null, '#modal_details');
   
     const sizeP = createElement('p', '', null, null, '#modal_details');
     createElement('h4', 'Size:', {className: 'textBg'}, null, sizeP);
-    // Radio "small"
     createElement(
       'input',
       '',
@@ -81,7 +71,6 @@ export function createCheckoutForm(product, changeSizeHandler, changeToppingHand
     );
     createElement('span', 'Small', {className: 'mg'}, null, sizeP);
     
-    // Radio "big"
     createElement(
       'input',
       '',
