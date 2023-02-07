@@ -32,6 +32,7 @@ const sendOrder = () => {
             "Content-Type": "application/json"
         },
     })
+    
     .then(response => console.log(response));
     }
     else{
